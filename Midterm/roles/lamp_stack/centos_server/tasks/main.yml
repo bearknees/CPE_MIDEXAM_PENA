@@ -1,0 +1,22 @@
+---
+- name: Install Apache on CentOS
+  ansible.builtin.package:
+    name: "{{ apache_package }}"
+    state: present
+
+- name: Start and enable Apache on CentOS
+  ansible.builtin.service:
+    name: "{{ apache_package }}"
+    state: started
+    enabled: true
+
+- name: Install MariaDB on CentOS
+  ansible.builtin.package:
+    name: "{{ mariadb_package }}"
+    state: present
+
+- name: Start and enable MariaDB on CentOS
+  ansible.builtin.service:
+    name: "{{ mariadb_package }}"
+    state: started
+    enabled: true

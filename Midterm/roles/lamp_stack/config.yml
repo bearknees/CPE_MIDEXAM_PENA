@@ -1,0 +1,17 @@
+---
+- name: Install LAMP Stack
+  hosts: httpd
+  become: true
+
+  roles:
+    - role: centos_server
+      vars:
+        apache_package: "httpd"
+        mariadb_package: "mariadb-server"
+      when: ansible_distribution == 'CentOS'
+
+    - role: ubuntu_server
+      vars:
+        apache_package: "apache2"
+        mariadb_package: "mariadb-server"
+      when: ansible_distribution == 'Ubuntu'

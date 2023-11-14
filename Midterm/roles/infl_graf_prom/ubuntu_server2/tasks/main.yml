@@ -1,0 +1,13 @@
+---
+- name: Updating the repo and installing Grafana
+  apt:
+    name:
+      - grafana
+  become: yes
+
+- name: Making sure that the Grafana server is started and enabled
+  service:
+    name: grafana-server
+    state: restarted
+    enabled: true
+  become: yes

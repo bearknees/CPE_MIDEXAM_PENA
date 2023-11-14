@@ -1,0 +1,15 @@
+---
+- name: Install InfluxDB on Ubuntu Server
+  become: true
+  ansible.builtin.shell: |
+    sudo apt-get update
+    sudo apt-get install -y influxdb
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Start and enable InfluxDB service on Ubuntu Server
+  become: true
+  ansible.builtin.service:
+    name: influxdb
+    state: started
+    enabled: yes
+  when: ansible_distribution == 'Ubuntu'

@@ -1,0 +1,12 @@
+---
+- hosts: influx
+  roles:
+    - role: ubuntu_server
+
+- hosts: grafana
+  roles:
+    - role: ubuntu_server2
+
+- hosts: prometheus
+  roles:
+    - role: centos_server
